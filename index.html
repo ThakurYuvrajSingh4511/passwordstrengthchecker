@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-blur blue"></div>
+    <div class="bg-blur purple"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Main Card -->
+    <div class="container">
+        <h1>🔐 Password Security Analyzer</h1>
+        <p class="subtitle">Cyber Security Assessment Tool</p>
+
+        <input 
+            type="password" 
+            id="password"
+            placeholder="Enter your password"
+            onkeyup="checkPassword()"
+        >
+
+        <div class="progress">
+            <div id="strength-bar"></div>
+        </div>
+
+        <p id="result"></p>
+        <!-- Breach message JS se dynamically aayega -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
