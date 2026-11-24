@@ -1,3 +1,4 @@
+
 async function checkPassword() {
     let password = document.getElementById("password").value;
     let strengthBar = document.getElementById("strength-bar");
@@ -30,6 +31,23 @@ async function checkPassword() {
     }
 }
 
+// ---------------- PASSWORD VISIBILITY ----------------
+
+function togglePasswordVisibility() {
+    const password = document.getElementById("password");
+    const eye = document.getElementById("togglePassword");
+
+    if (password.type === "password") {
+        password.type = "text";
+        eye.textContent = "🙈";
+        eye.setAttribute("aria-label", "Hide password");
+    } else {
+        password.type = "password";
+        eye.textContent = "👁️";
+        eye.setAttribute("aria-label", "Show password");
+    }
+}
+
 // ---------------- BREACH CHECK ----------------
 
 async function checkBreach(password) {
@@ -49,12 +67,13 @@ async function checkBreach(password) {
 
     text.split("\n").forEach(line => {
         const [hashSuffix, count] = line.split(":");
-        if (hashSuffix === suffix) {
-            breachCount = count;
+        if (hashSuffix.trim() === suffix) {
+            breachCount = Number(count.trim());
         }
     });
 
     let breachMsg = document.getElementById("breach");
+
     if (!breachMsg) {
         breachMsg = document.createElement("p");
         breachMsg.id = "breach";
